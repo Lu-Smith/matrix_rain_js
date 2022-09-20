@@ -65,7 +65,7 @@ function animate(timeStamp) {
         ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
         ctx.textAlign = 'center';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = gradient; //'#0aff0a';
+        ctx.fillStyle = gradient; 
         ctx.font = effect.fontSize + 'px monospace';
         effect.symbols.forEach(symbol => symbol.draw(ctx));
         timer = 0;
@@ -82,3 +82,32 @@ window.addEventListener('resize', function() {
     canvas.height = window.innerHeight;
     effect.resize(canvas.width, canvas.height);
 })
+
+//footer
+
+const gitHubText = document.getElementById('gitHub');
+const strGitHubText = gitHubText.textContent;
+const splitGitHubText = strGitHubText.split("");
+gitHubText.textContent = "";
+
+for (let i = 0; i < splitGitHubText.length; i++) {
+    gitHubText.innerHTML += "<span>" + splitGitHubText[i] + "</span>";
+}
+
+let char = 0;
+let timerFooter = setInterval(onTick, 50);
+
+function onTick(){
+    const spans = gitHubText.querySelectorAll('span')[char];
+    spans.classList.add('fade');
+    char++
+    if(char === splitGitHubTextText.length) {
+        complete();
+        return;
+    }
+}
+
+function complete() {
+    clearInterval(timerFooter);
+    timerFooter = null;
+}
