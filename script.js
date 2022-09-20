@@ -32,11 +32,11 @@ class Effect {
          this.fontSize = 25;
          this.columns = this.canvasWidth/this.fontSize;
          this.symbols = [];
-         this.#initialize;
+         this.#initialize();
          console.log(this.symbols);
     }
     #initialize(){
-         for (let i = 0; i < this.column; i++) {
+         for (let i = 0; i < this.columns; i++) {
             this.symbols[i] = new Symbol(i , 0, this.fontSize, this.canvasHeight);
          }
     }
