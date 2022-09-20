@@ -4,6 +4,14 @@ const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
+let gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+gradient.addColorStop(0, 'red');
+gradient.addColorStop(0.2, 'orange');
+gradient.addColorStop(0.4, 'yellow');
+gradient.addColorStop(0.6, 'green');
+gradient.addColorStop(0.8, 'blue');
+gradient.addColorStop(1, 'magenta');
+
 class Symbol {
     constructor(x, y, fontSize, canvasHeight){
         this.characters = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
@@ -60,7 +68,7 @@ function animate(timeStamp) {
         ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
         ctx.textAlign = 'center';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = '#0aff0a';
+        ctx.fillStyle = gradient; //'#0aff0a';
         ctx.font = effect.fontSize + 'px monospace';
         effect.symbols.forEach(symbol => symbol.draw(ctx));
         timer = 0;
